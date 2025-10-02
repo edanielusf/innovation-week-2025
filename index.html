@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Week 2025 | Design + Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Starfield Background */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-1000px) translateY(500px);
+                opacity: 0;
+            }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shootingStar 2s linear;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #a78bfa;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            margin: 0 auto 30px;
+            animation: floatLogo 6s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease, gradientShift 3s ease infinite;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #a78bfa;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .highlight-card:hover::after {
+            opacity: 1;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .highlight-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .highlight-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .highlight-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #a78bfa;
+        }
+
+        .highlight-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Daily Themes */
+        .themes {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .theme-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .theme-item {
+            margin-bottom: 50px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .theme-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .theme-date {
+            font-size: 14px;
+            color: #a78bfa;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .theme-item h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .theme-item p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo-img {
+            height: 80px;
+            width: auto;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .contact-info h4 {
+            color: #a78bfa;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .contact-info p {
+            color: #cbd5e1;
+            margin: 5px 0;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #a78bfa;
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-logo {
+                max-width: 300px;
+            }
+
+            .footer-logos {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <div class="logo">Design + Business</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#highlights">Highlights</a></li>
+                    <li><a href="#themes">Schedule</a></li>
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Innovation Week 2025</h1>
+            <p class="tagline">Designing the Future: Innovation Meets AI</p>
+            <p class="hero-description">
+                Innovation Week 2025 is centered on Innovation with AI, exploring how AI intersects with business and design thinking. Each day highlights a new theme, from sustainability and technology to consulting and entrepreneurship, through keynotes, panels, and hands-on workshops that show how AI and business frameworks can be applied to real-world challenges.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://luma.com/rw2vtjk1" target="_blank" class="btn btn-primary">Register Now</a>
+                <a href="#highlights" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="highlights" class="highlights">
+        <div class="container">
+            <h2 class="section-title">Event Highlights</h2>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🤖</div>
+                    <h3>AI Workshop with Replit</h3>
+                    <p>Dive deep into AI development with hands-on workshops using Replit. Learn to build AI-powered applications, explore machine learning models, and discover how to integrate AI into real-world business solutions. Plus, receive Replit credits to use during the hackathon! Perfect for beginners and experienced developers alike.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">💡</div>
+                    <h3>Innovation Hackathon</h3>
+                    <p>Put your skills to the test in our intensive hackathon! Form teams, tackle real-world challenges, and build innovative AI-driven solutions. Compete for prizes while networking with industry professionals and fellow innovators. Mentorship and resources provided throughout.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎤</div>
+                    <h3>Keynotes & Panels</h3>
+                    <p>Hear from industry leaders, innovators, and AI experts about the future of technology, business, and design. Engage in thought-provoking discussions on sustainability, entrepreneurship, consulting, and how AI is reshaping every industry.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🌐</div>
+                    <h3>Industry Domains</h3>
+                    <p>Explore what's happening across tech, consulting, and sustainability. Connect with professionals from diverse industries, discover emerging trends, and build your network. Learn how different sectors are leveraging AI and innovation to solve real-world problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="themes" class="themes">
+        <div class="container">
+            <h2 class="section-title">Weekly Schedule</h2>
+            <div class="theme-timeline">
+                <div class="theme-item">
+                    <div class="theme-date">Monday, October 20</div>
+                    <h3>Panel: AI & Innovation</h3>
+                    <p>Kickoff with an inspiring panel discussion featuring industry leaders exploring the intersection of artificial intelligence and innovation. Discover how AI is transforming industries and creating new opportunities for creative problem-solving.</p>
+                </div>
+                <div class="theme-item">
+                    <div class="theme-date">Tuesday, October 21</div>
+                    <h3>Technology</h3>
+                    <p>Dive into cutting-edge technologies shaping our future. Explore emerging tech trends, learn about breakthrough innovations, and understand how technology is revolutionizing the way we work and live.</p>
+                </div>
+                <div class="theme-item">
+                    <div class="theme-date">Wednesday, October 22</div>
+                    <h3>Consulting</h3>
+                    <p>Understand how AI is transforming the consulting industry. From data analytics to predictive modeling, see how consultants are leveraging AI to deliver unprecedented value to clients and solve complex business challenges.</p>
+                </div>
+                <div class="theme-item">
+                    <div class="theme-date">Thursday, October 23</div>
+                    <h3>Sustainability</h3>
+                    <p>Explore how artificial intelligence is driving sustainable solutions and environmental innovation. Discover AI applications in climate tech, resource optimization, and green business practices that are making a real difference.</p>
+                </div>
+                <div class="theme-item">
+                    <div class="theme-date">Friday, October 24</div>
+                    <h3>Entrepreneurship: AI Workshop & Hackathon</h3>
+                    <p>Discover how AI is enabling new business models and startup opportunities. Participate in hands-on AI workshops with Replit and showcase your innovation in our grand hackathon finale. Awards ceremony and networking reception to celebrate the week's achievements!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="highlights">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Join Innovation Week 2025</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; color: #cbd5e1; font-size: 18px;">
+                Don't miss this opportunity to be part of the future of AI, business, and design. Limited spots available!
+            </p>
+            <a href="https://luma.com/rw2vtjk1" target="_blank" class="btn btn-primary" style="font-size: 20px;">Register for Free</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 style="color: #a78bfa; margin-bottom: 15px;">Design + Business Club</h3>
+                <p style="color: #cbd5e1; margin-bottom: 10px;">Innovation Week 2025</p>
+                <p style="color: #cbd5e1;">Zell Lurie Institute, University of Michigan</p>
+                
+                <div class="contact-info">
+                    <h4>Contact:</h4>
+                    <p><strong>Ebbin Daniel</strong></p>
+                    <p><a href="mailto:ebbin@umich.edu">ebbin@umich.edu</a></p>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Design + Business Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Starfield animation
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const numStars = 200;
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.z = Math.random() * canvas.width;
+                this.size = Math.random() * 2;
+            }
+
+            update() {
+                this.z -= 2;
+                if (this.z <= 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                const x = (this.x - canvas.width / 2) * (canvas.width / this.z);
+                const y = (this.y - canvas.height / 2) * (canvas.width / this.z);
+                const s = this.size * (canvas.width / this.z);
+
+                const centerX = canvas.width / 2 + x;
+                const centerY = canvas.height / 2 + y;
+
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(255, 255, 255, ' + (1 - this.z / canvas.width) + ')';
+                ctx.arc(centerX, centerY, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push(new Star());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Shooting stars
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = Math.random() * 50 + '%';
+            shootingStar.style.left = Math.random() * 100 + '%';
+            document.body.appendChild(shootingStar);
+
+            setTimeout(() => shootingStar.remove(), 2000);
+        }
+
+        setInterval(createShootingStar, 3000);
+
+        // Resize canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.highlight-card, .theme-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
